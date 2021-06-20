@@ -9,15 +9,15 @@ from django.forms import modelformset_factory
 
 
 
-class Home(TemplateView):
-    template_name = 'index.html'
+# class Home(TemplateView):
+#     template_name = 'index.html'
 
-def file_upload(request):
-    if request.method == 'POST':
-        my_file = request.FILES.get('file')
-        Post.objects.create(image=my_file)
-        return HttpResponse('')
-    return JsonResponse({'post':'false'})
+# def file_upload(request):
+#     if request.method == 'POST':
+#         my_file = request.FILES.get('file')
+#         Post.objects.create(image=my_file)
+#         return HttpResponse('')
+#     return JsonResponse({'post':'false'})
 
 def manage_post(request):
     if request.method == 'POST':
@@ -27,6 +27,14 @@ def manage_post(request):
             name = form.cleaned_data['name']
             Post.objects.create(image=imageFile,name=name)
             form.save()
+            return HttpResponse('form created successfully')
     else:
         form = PostForm()
     return render(request,'app2/index.html',{'form': form})
+
+
+def display_post(request):
+    posts = Post.objects.all()
+    return render(request,'app2/display.html',{'posts': posts})
+    
+

@@ -1,3 +1,4 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +8,18 @@
     <title>Display Image</title>
 </head>
 <body>
+    {% for post in posts %}
+    <ol>
+        <ul>
+            <li>
+                <img src="{{post.image}}" alt="post-image">
+            </li>
+            <li>
+                {{post.name}}
+            </li>
     
+        </ul>
+    </ol>
+    {% endfor %}
 </body>
 </html>

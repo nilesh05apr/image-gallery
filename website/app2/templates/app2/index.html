@@ -11,6 +11,8 @@
 <body>
     <div class="container mt-3">
         <h1>Upload file</h1>
+<!--
+
 
         <form action="upload" method="POST" class="dropzone">
           {%csrf_token%}
@@ -18,6 +20,13 @@
               <input name="file" type="file" multiple />
             </div>
           </form>
+-->
+          <h3>Django form</h3>
+          <form method="post">
+              {%csrf_token%}
+            {{ form }}
+            <button>submit</button>
+         </form>
 
     </div>
      

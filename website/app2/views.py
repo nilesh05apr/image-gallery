@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.views.generic import TemplateView
 from django.http import HttpResponse, JsonResponse
 from .models import Post
@@ -21,13 +21,13 @@ from django.forms import modelformset_factory
 
 def manage_post(request):
     if request.method == 'POST':
-        form = PostForm(request.POST or None)
+        form = PostForm(request.POST, request.FILES)
         if form.is_valid():
-            imageFile = form.cleaned_data['image']
-            name = form.cleaned_data['name']
-            Post.objects.create(image=imageFile,name=name)
-            form.save()
-            return HttpResponse('form created successfully')
+            imageFile = request.FILES['image']
+            Name = request.POST.get('name')
+            instance = Post(image=imageFile,name=Name)
+            instance.save()
+            return redirect('display_post')
     else:
         form = PostForm()
     return render(request,'app2/index.html',{'form': form})

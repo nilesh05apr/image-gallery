@@ -9,9 +9,6 @@ from django.forms import modelformset_factory
 
 
 
-def Homepage(request):
-    return render(request,'app2/index.html')
-
 # def file_upload(request):
 #     if request.method == 'POST':
 #         my_file = request.FILES.get('file')

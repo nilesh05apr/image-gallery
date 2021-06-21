@@ -10,15 +10,24 @@ crossorigin="anonymous">
     <title>Display Image</title>
 </head>
 <body>
-    {% for post in posts %}
-    <div class="card" style="width: 18rem;">
-        <img src="{{post.image.url}}" class="card-img-top" alt="{{post.name}}">
-        <div class="card-body">
-          <p class="card-text">{{post.name}}</p>
+    
+    <div class="container">
+      <div class="row">
+        {% for post in posts %}
+        <div class="col">
+          <div class="card" style="width: 18rem;">
+            <img src="{{post.image.url}}" class="card-img-top" alt="{{post.name}}">
+            <div class="card-body">
+              <p class="card-text">{{post.name}} <button><a href="{% url 'delete' post.pk %}" >Delete</a></button></p>
+            </div>
+          </div>              
         </div>
+        {% endfor %}
       </div>
-    {% endfor %}
+    </div>
+    
 
-    <a href = "add">Add post</a>
+    <a href = " add ">Add post</a>
+    <a href = "">HomePage</a>
 </body>
 </html>

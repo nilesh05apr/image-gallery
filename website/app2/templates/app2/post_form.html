@@ -12,7 +12,7 @@ integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG
         <h1>Upload file</h1>
           <form method="post" enctype="multipart/form-data">
               {%csrf_token%}
-            {{ form.as_p }}
+              {{ form.as_p }}
             <button type="submit">Upload</button>
          </form>
 

@@ -3,18 +3,7 @@ from django.views.generic import TemplateView
 from django.http import HttpResponse, JsonResponse
 from .models import Post
 from .forms import PostForm
-from django.forms import modelformset_factory
 
-# Create your views here.
-
-
-
-# def file_upload(request):
-#     if request.method == 'POST':
-#         my_file = request.FILES.get('file')
-#         Post.objects.create(image=my_file)
-#         return HttpResponse('')
-#     return JsonResponse({'post':'false'})
 
 def manage_post(request):
     if request.method == 'POST':
@@ -39,3 +28,11 @@ def delete_post(request,p_id = None):
     post = Post.objects.get(id=p_id).delete()
     posts = Post.objects.all()
     return render(request,'app2/display.html',{'posts': posts})
+
+
+def increment_likes(request,p_id = None):
+    post = Post.objects.get(id=p_id)
+    post.likes += 1
+    post.save()
+    posts = Post.objects.all()
+    return render(request,'app2/display.html',{'posts':posts})

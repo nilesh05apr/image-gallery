@@ -12,7 +12,7 @@ crossorigin="anonymous">
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="{% url 'display_post' %}"> ImageGallery</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -20,24 +20,10 @@ crossorigin="anonymous">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="{% url 'display_post' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
+          <a class="nav-link" href=" add">Add</a>
         </li>
       </ul>
     </div>
@@ -54,11 +40,21 @@ crossorigin="anonymous">
           <div class="col">
             <div class="card" style="width: 18rem;">
               <img src="{{post.image.url}}" class="card-img-top" alt="{{post.name}}" width="300px" height="300px">
-              <div class="card-body">
-                <p class="card-text">{{post.name}}  
-                  <button class="btn btn-outline-light" type="button"><a href="{% url 'delete' post.pk %}" class="badge badge-light">Delete</a></button> 
-                  <button class="btn btn-outline-light" type="button"><a href="{% url 'like' post.pk %}" class="badge badge-light">Like</a></button>
-                </p>
+              <div class="card-body" style="background-color: #ccfcd4;">
+                <h5 class="card-title">{{post.name}}</h5>
+                <div class="bg-purple-300" >
+                  <p class="card-text">  
+                    <button class="btn btn-danger" type="button">
+                      <a href="{% url 'delete' post.pk %}" style="text-decoration: none; color: #f0ccfc;">Delete</a>
+                    </button>
+                    <span style="padding-left: 10px;">{{post.likes}} likes</span> 
+                    <button class="btn btn-success" type="button">
+                      <a href="{% url 'like' post.pk %}" style="text-decoration: none; color: #f0ccfc;">Like
+                        <!-- <img src="website/staticfiles/app2/like.png" alt="like"> -->
+                      </a>
+                    </button>
+                  </p>  
+                </div>
               </div>
             </div>              
           </div>

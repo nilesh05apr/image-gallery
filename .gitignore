@@ -1,3 +1,6 @@
 __pycache__
 env
 website/media/images
+website/app2/__pycache__
+website/staticfiles/admin/
+website/staticfiles/app2/
